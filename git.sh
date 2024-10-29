@@ -1,6 +1,6 @@
 #!/bin/bash
 
-comment='README.mdから日付の時間を削除'
+comment='app5.jsにじゃんけんの勝敗を決めるプログラムを追加'
 
 git add .
 git commit -am $comment
