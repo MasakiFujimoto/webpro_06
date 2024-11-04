@@ -5,12 +5,15 @@
     <title>じゃんけん</title>
 </head>
 <body>
+    <h1>じゃんけん！(最初はグーを押して始めてください．)(リセットも最初はグーです)</h1>
     <form action="/janken">
-        <input type="text" name="hand" required>
-        <label for="hand">何を出す？</label>
+        <!-- <input type="text" name="hand" required> -->
+        <label for="hand">最初はグー！</label>
         <input type="submit" values="じゃんけん　ポン">
+        <input type="hidden" name="hand" value="グー">
         <input type="hidden" name="win" value="0">
         <input type="hidden" name="total" value="0">
+        <input type="hidden" name="secret" value="1">
     </form>
 
     <form action="/janken">
