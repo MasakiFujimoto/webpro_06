@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>充電</title>
+</head>
+<body>
+    <h1>充電</h1>
+    <form action="/juuden">
+        <!-- <input type="text" name="hand" required> -->
+        <label for="hand">リセット</label>
+        <input type="submit" values="充電">
+        <input type="hidden" name="win" value="0">
+        <input type="hidden" name="total" value="0">
+        <input type="hidden" name="secret" value="1">
+    </form>
+
+    <form action="/juuden">
+        <input type="text" name="hand" required>
+        <label for="hand">次は何を出す？</label>
+        <input type="hidden" name="win" value="<%= win %>">
+        <input type="hidden" name="total" value="<%= total %>">
+        <input type="submit" values="拍手×2">
+    </form>
+    充電，バリア，ハーから選んでね   
+    <hr>
+    <p>あなたの手は<%= your %>です．</p>
+    <p>コンピュータは<%= cpu %>です．</p>
+    <p>判定：<%= judgement %></p>
+    <p>現在<%= total %>試合中<%= win %>勝しています．</p>
+    <hr>
+</body>
+</html>
