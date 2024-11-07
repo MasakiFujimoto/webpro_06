@@ -12,6 +12,7 @@
         <label for="suggest">次は何を出す？</label>
         <input type="hidden" name="win" value="<%= win %>">
         <input type="hidden" name="total" value="<%= total %>">
+        <input type="hidden" name="secret" value="<%= secret %>">
         <input type="submit" value="これだ">
     </form>
     1~10の数字を半角の数字で選んでね   
@@ -21,5 +22,6 @@
     <p>判定：<%= judgement %></p>
     <p>現在<%= total %>試合中<%= win %>勝しています．</p>
     <hr>
+    <p><%= attention %></p>
 </body>
 </html>

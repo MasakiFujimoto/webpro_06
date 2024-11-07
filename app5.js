@@ -102,12 +102,23 @@ app.get("/juuden",(req, res) => {
   let secret = Number(req.query.secret);
   const num = Math.floor( Math.random() * 3 + 1 );
   let cpu = '';
+  let cpuenergy = Number(req.query.cpuenergy);
   if ( secret == 1) cpu = '';
   else if( num==1 ) cpu = 'バリア';
-  else if( num==2 ) cpu = 'ハー';
+  else if( num==2 ) {
+    if(cpuenergy >=1){
+      cpu = 'ハー';
+      cpuenergy = cpuenergy -1;
+    }
+    else cpu = '充電'    
+  }
   else cpu = '充電';
   
+  if (cpu ='充電') cpuenergy += 1;
+
+  let energy = Number(req.query.energy);
   let judgement = '';
+  if (energy == 0) hand = 'スカしっぺ'
   if (hand == 'バリア' || cpu == 'バリア'){
     judgement = '何も起きない';
     total += 1;
@@ -125,12 +136,21 @@ app.get("/juuden",(req, res) => {
     judgement = '何も起きない';
     total +=1;
   }
+  else if (hand == 'スカしっぺ' && cpu == 'ハー'){
+    total+=1;
+    judgement ='負け';
+  }
+  else if (hand == 'スカしっぺ' && cpu == '充電'){
+    total +=1;
+    judgement = '何も起きない';
+  }
   const display = {
     your: hand,
     cpu: cpu,
     judgement: judgement,
     win: win,
-    total: total
+    total: total,
+    cpuenergy: cpuenergy
   }
   res.render( 'juuden', display );
 }
@@ -154,12 +174,35 @@ app.get("/magic",(req, res) => {
     judgement = '不正解'
   }
 
+  let secret = Number(req.query.secret);
+  let attention = '';
+  if (suggest > 10){
+    secret +=1;
+    if(secret == 0){
+      attention = '数字は1~10の間で提案してね！'
+    }
+    else if(secret == 1){
+      attention = '......さっき1~10の間で提案してねって言ったよね'
+    }
+    else if(secret <5){
+      attention = 'あれ，聞こえてる？バグで僕の言葉が届いてないのかな......'
+    }
+    else if(secret <10){
+      attention = 'ねぇ，遊んでいるよね．僕で遊んでるよね．いい加減にしてくれる？人で遊ぶのは良くないって親に教わらなかった？'
+    }
+    else if(secret <= 10){
+      attention ='ぐすん.......'
+    }
+  }
+
   const display = {
     your: suggest,
     cpu: cpu,
     judgement: judgement,
     win: win,
-    total: total
+    total: total,
+    secret: secret,
+    attention: attention
   }
   res.render( 'magic', display);
 });
