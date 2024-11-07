@@ -95,7 +95,7 @@ app.get("/janken", (req, res) => {
   res.render( 'janken', display );
 });
 
-app.get("/juuden",(req, res) =>{
+app.get("/juuden",(req, res) => {
   let hand = req.query.hand;
   let total = Number( req.query.total );
   let win = Number(req.query.win);
