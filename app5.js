@@ -115,7 +115,7 @@ app.get("/juuden",(req, res) => {
   else cpu = '充電';
 
   let energy = Number(req.query.energy);
-    
+
   if (cpu =='充電') cpuenergy += 1;
   if (hand == '充電') energy += 1;
 
@@ -185,10 +185,10 @@ app.get("/magic",(req, res) => {
     if(secret == 0){
       attention = '数字は1~10の間で提案してね！'
     }
-    else if(secret == 1){
+    else if(secret < 5){
       attention = '......さっき1~10の間で提案してねって言ったよね'
     }
-    else if(secret <5){
+    else if(secret ==5){
       attention = 'あれ，聞こえてる？バグで僕の言葉が届いてないのかな......'
     }
     else if(secret <10){
