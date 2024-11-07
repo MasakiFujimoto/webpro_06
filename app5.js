@@ -113,12 +113,15 @@ app.get("/juuden",(req, res) => {
     else cpu = '充電'    
   }
   else cpu = '充電';
-  
-  if (cpu ='充電') cpuenergy += 1;
 
   let energy = Number(req.query.energy);
+    
+  if (cpu =='充電') cpuenergy += 1;
+  if (hand == '充電') energy += 1;
+
+  console.log("energy:",energy,"hand:",hand);
   let judgement = '';
-  if (energy == 0) hand = 'スカしっぺ'
+  if (energy == 0 && hand == 'ハー') hand = 'スカしっぺ';
   if (hand == 'バリア' || cpu == 'バリア'){
     judgement = '何も起きない';
     total += 1;
@@ -150,7 +153,8 @@ app.get("/juuden",(req, res) => {
     judgement: judgement,
     win: win,
     total: total,
-    cpuenergy: cpuenergy
+    cpuenergy: cpuenergy,
+    energy: energy
   }
   res.render( 'juuden', display );
 }
