@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>数字当て</title>
+</head>
+<body>
+    <h1>数字宛ゲーム</h1>
+
+    <form action="/magic">
+        <input type="text" name="suggest" required>
+        <label for="suggest">次は何を出す？</label>
+        <input type="hidden" name="win" value="<%= win %>">
+        <input type="hidden" name="total" value="<%= total %>">
+        <input type="submit" value="これだ">
+    </form>
+    1~10の数字を半角の数字で選んでね   
+    <hr>
+    <p>あなたの手は<%= your %>です．</p>
+    <p>コンピュータは<%= cpu %>です．</p>
+    <p>判定：<%= judgement %></p>
+    <p>現在<%= total %>試合中<%= win %>勝しています．</p>
+    <hr>
+</body>
+</html>

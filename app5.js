@@ -113,13 +113,17 @@ app.get("/juuden",(req, res) => {
     total += 1;
   }
   else if (hand == '充電' && cpu == 'ハー'){
-    judgement == '負け';
+    judgement = '負け';
     total += 1;
   }
   else if (hand == 'ハー' && cpu == '充電'){
-    judgement == '勝ち';
+    judgement = '勝ち';
     total +=1;
     win += 1;
+  }
+  else if (hand == cpu){
+    judgement = '何も起きない';
+    total +=1;
   }
   const display = {
     your: hand,
@@ -132,4 +136,31 @@ app.get("/juuden",(req, res) => {
 }
 );
 
+app.get("/magic",(req, res) => {
+  let suggest = Number(req.query.suggest);
+  let total = Number(req.query.total);
+  let win = Number(req.query.win);
+
+  const cpu = Math.floor(Math.random() *10 +1);
+  let judgement = ''
+
+  if (suggest == cpu){
+    win +=1;
+    total +=1;
+    judgement = '正解'
+  }
+  else {
+    total += 1;
+    judgement = '不正解'
+  }
+
+  const display = {
+    your: suggest,
+    cpu: cpu,
+    judgement: judgement,
+    win: win,
+    total: total
+  }
+  res.render( 'magic', display);
+});
 app.listen(8080, () => console.log("Example app listening on port 8080!"));
