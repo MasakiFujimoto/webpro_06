@@ -90,18 +90,28 @@ e1["プレイヤーにどの手を出すかを決めさせる"]
 e2["cpuがどの手を出すかを決める"]
 win["勝利"]
 loose["負け"]
-both["何も起きなかった"]
+if2["secretの量"]
 
 start --> e1;
 e1 --> e2;
 e2 --> if;
 if -->|yes| win;
 if -->|no| loose;
-if -->|同じ手| both;
 win --> end1;
 loose --> end1;
-both --> end1;
 end1 --> e1
+end1 --> if2
+if2 --> |1|secret1
+if2 --> |1より上で5未満|secret2
+if2 --> |5|secret3
+if2 --> |5より上で10未満|secret4
+if2 --> |10以上|secret5
+secret1 --> 結果
+secret2 --> 結果
+secret3 --> 結果
+secret4 --> 結果
+secret5 --> 結果
+結果 --> end1
 ```
 ```mermaid
 flowchart TD;
