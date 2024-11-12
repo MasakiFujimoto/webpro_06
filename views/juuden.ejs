@@ -18,8 +18,14 @@
     </form>
 
     <form action="/juuden">
-        <input type="text" name="hand" required>
-        <label for="hand">次は何を出す？</label>
+        <!-- <input type="text" name="hand" required> -->
+        <!-- <label for="hand">次は何を出す？</label> -->
+        <input type="radio" name=juuden id="juuden">
+        <label for="juuden">充電</label>
+        <input type="radio" name="baria" id="baria">
+        <label for="baria">バリア</label>
+        <input type="radio" name="ha" id="ha">
+        <label for="ha">ハー</label>
         <input type="hidden" name="win" value="<%= win %>">
         <input type="hidden" name="total" value="<%= total %>">
         <input type="submit" values="拍手×2">

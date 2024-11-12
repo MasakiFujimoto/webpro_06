@@ -96,13 +96,19 @@ app.get("/janken", (req, res) => {
 });
 
 app.get("/juuden",(req, res) => {
-  let hand = req.query.hand;
+  // let hand = req.query.hand;
   let total = Number( req.query.total );
   let win = Number(req.query.win);
   let secret = Number(req.query.secret);
   const num = Math.floor( Math.random() * 3 + 1 );
   let cpu = '';
   let cpuenergy = Number(req.query.cpuenergy);
+
+  let hand='';
+  if( req.query.juuden ) hand = '充電'
+  if( req.query.baria ) hand='バリア'
+  if( req.query.ha ) hand='ハー'
+
   if ( secret == 1) cpu = '';
   else if( num==1 ) cpu = 'バリア';
   else if( num==2 ) {
