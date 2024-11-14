@@ -6,6 +6,7 @@
 ファイル名|説明
 -|-
 app5.js | プログラム本体
+public/first.html | じゃんけんゲームや充電ゲーム，数字あてゲームのURLを書いた画面
 public/janken.html |じゃんけんの開始画面
 views/janken.ejs | じゃんけんのテンプレートファイル
 public/juuden.html |充電ゲームの開始画面
