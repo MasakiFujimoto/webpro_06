@@ -213,4 +213,21 @@ app.get("/magic",(req, res) => {
   }
   res.render( 'magic', display);
 });
+
+app.get("/get_test", (req, res) => {
+  res.json({
+    answer: 0
+  })
+});
+
+app.post("/add", (req, res) => {
+  console.log("POST");
+  console.log( req.body );
+  const num1 = Number( req.body.num1 );
+  const num2 = Number( req.body.num2 );
+  console.log( num1 );
+  console.log( num2 );
+  res.json( {answer: num1+num2} );
+});
+
 app.listen(8080, () => console.log("Example app listening on port 8080!"));
